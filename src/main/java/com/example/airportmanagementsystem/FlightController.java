@@ -20,9 +20,14 @@ public class FlightController {
         return flightService.getAllFlights();
    }
 
-   @GetMapping("/flights/{id}")
-    public Flight getFlight(@PathVariable Long id){
-        return flightService.getFlight(id).orElseThrow(() -> new FlightNotFoundException(id));
+   @GetMapping("/flights/id/{id}")
+    public Flight getFlightById(@PathVariable Long id){
+        return flightService.getFlightById(id).orElseThrow(() -> new FlightNotFoundException(id));
+   }
+
+   @GetMapping("/flights/name/{name}")
+   public Flight getFlightByName(@PathVariable String name){
+        return flightService.getFlightByName(name).orElseThrow(() -> new FlightNotFoundException(name));
    }
 
    @PostMapping("/flights")

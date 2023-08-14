@@ -7,7 +7,7 @@ import java.util.Optional;
 
 @Service
 public class FlightService {
-    private FlightRepository flightRepository;
+    private final FlightRepository flightRepository;
 
     public FlightService(FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
@@ -17,7 +17,7 @@ public class FlightService {
         return flightRepository.findAll();
     }
 
-    public Optional<Flight> getFlight(Long id){
+    public Optional<Flight> getFlightById(Long id){
         return flightRepository.findById(id);
     }
 
@@ -45,4 +45,7 @@ public class FlightService {
         flightRepository.deleteById(id);
     }
 
+    public Optional<Flight> getFlightByName(String name) {
+        return flightRepository.findFlightByName(name);
+    }
 }
