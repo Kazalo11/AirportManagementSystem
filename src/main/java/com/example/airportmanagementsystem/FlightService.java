@@ -25,7 +25,7 @@ public class FlightService {
         return flightRepository.save(newFlight);
     }
 
-    public Flight changeFlight(Flight updateFlight, Long id){
+    public Flight changeFlightById(Flight updateFlight, Long id){
         return flightRepository.findById(id)
                 .map(employee -> {
                     employee.setName(updateFlight.getName());
@@ -41,7 +41,7 @@ public class FlightService {
                 });
     }
 
-    public void deleteFlight(Long id){
+    public void deleteFlightById(Long id){
         flightRepository.deleteById(id);
     }
 

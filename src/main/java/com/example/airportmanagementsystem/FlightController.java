@@ -35,14 +35,14 @@ public class FlightController {
         return flightService.addFlight(newFlight);
    }
 
-   @PutMapping("/flights/{id}")
+   @PutMapping("/flights/id/{id}")
     public Flight updateFlight(@RequestBody Flight updatedFlight, @PathVariable Long id){
-        return flightService.changeFlight(updatedFlight, id);
+        return flightService.changeFlightById(updatedFlight, id);
    }
 
-   @DeleteMapping("/flights/{id}")
+   @DeleteMapping("/flights/id/{id}")
     public void deleteFlight(@PathVariable Long id){
-        flightService.deleteFlight(id);
+        flightService.deleteFlightById(id);
    }
 
 
