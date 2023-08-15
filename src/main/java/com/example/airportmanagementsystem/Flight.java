@@ -1,11 +1,10 @@
 package com.example.airportmanagementsystem;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,6 +19,8 @@ public class Flight {
     private String arrivalAirport;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Passenger> passengerList;
 
     @Override
     public boolean equals(Object o) {
@@ -37,7 +38,8 @@ public class Flight {
                 leavingAirport.equals(f.getLeavingAirport()) &&
                 arrivalAirport.equals(f.getArrivalAirport()) &&
                 departureTime.equals(f.getDepartureTime()) &&
-                arrivalTime.equals(f.getArrivalTime())
+                arrivalTime.equals(f.getArrivalTime()) &&
+                passengerList.equals(f.getPassengerList())
         );
     }
 }

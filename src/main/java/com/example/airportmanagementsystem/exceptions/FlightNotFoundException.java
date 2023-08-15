@@ -1,4 +1,4 @@
-package com.example.airportmanagementsystem;
+package com.example.airportmanagementsystem.exceptions;
 
 public class FlightNotFoundException extends RuntimeException {
     public <T> FlightNotFoundException(T t) {

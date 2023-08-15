@@ -27,13 +27,14 @@ public class FlightService {
 
     public Flight changeFlightById(Flight updateFlight, Long id){
         return flightRepository.findById(id)
-                .map(employee -> {
-                    employee.setName(updateFlight.getName());
-                    employee.setArrivalAirport(updateFlight.getArrivalAirport());
-                    employee.setArrivalTime(updateFlight.getArrivalTime());
-                    employee.setDepartureTime(updateFlight.getDepartureTime());
-                    employee.setLeavingAirport(updateFlight.getLeavingAirport());
-                    return flightRepository.save(employee);
+                .map(flight -> {
+                    flight.setName(updateFlight.getName());
+                    flight.setArrivalAirport(updateFlight.getArrivalAirport());
+                    flight.setArrivalTime(updateFlight.getArrivalTime());
+                    flight.setDepartureTime(updateFlight.getDepartureTime());
+                    flight.setLeavingAirport(updateFlight.getLeavingAirport());
+                    flight.setPassengerList(updateFlight.getPassengerList());
+                    return flightRepository.save(flight);
                 })
                 .orElseGet(() -> {
                     updateFlight.setId(id);
@@ -47,5 +48,9 @@ public class FlightService {
 
     public Optional<Flight> getFlightByName(String name) {
         return flightRepository.findFlightByName(name);
+    }
+
+    public Optional<List<Flight>> getFlightsByPassengerName(String name) {
+        return flightRepository.findFlightsByPassengerName(name);
     }
 }

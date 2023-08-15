@@ -1,6 +1,8 @@
 package com.example.airportmanagementsystem;
 
 
+import com.example.airportmanagementsystem.exceptions.FlightNotFoundException;
+import com.example.airportmanagementsystem.exceptions.NoPassengerFlights;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -28,6 +30,11 @@ public class FlightController {
    @GetMapping("/flights/name/{name}")
    public Flight getFlightByName(@PathVariable String name){
         return flightService.getFlightByName(name).orElseThrow(() -> new FlightNotFoundException(name));
+   }
+
+   @GetMapping("/flights/passenger/name/{name}")
+   public List<Flight> getFlightsByPassengerName (@PathVariable String name){
+        return flightService.getFlightsByPassengerName(name).orElseThrow(() -> new NoPassengerFlights(name));
    }
 
    @PostMapping("/flights")
