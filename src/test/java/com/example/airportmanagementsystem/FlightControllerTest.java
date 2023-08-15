@@ -2,6 +2,7 @@ package com.example.airportmanagementsystem;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -10,6 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class FlightControllerTest {
     @Mock
     private FlightService flightService;
+
+
 
     @Test
     void getAllFlights() {
